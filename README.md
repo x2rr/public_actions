@@ -62,4 +62,7 @@ ql raw https://raw.githubusercontent.com/HarrylXue/public_actions/master/juejin_
 
 ## 历史 Star 数
 
+
+## Stargazers over time
+
 [![Stargazers over time](https://starchart.cc/HarrylXue/public_actions.svg)](https://starchart.cc/HarrylXue/public_actions)
