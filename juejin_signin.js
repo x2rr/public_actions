@@ -1,13 +1,14 @@
 /*
   cron 51 9 * * * juejin_signin.js
   掘金社区
-  更新时间:2021-09-06
+  更新时间:2021-12-24
   活动入口：https://juejin.cn/user/center/signin
   只支持Node.js
   脚本兼容: Node.js
-  脚本二创 harry27 https://github.com/HarrylXue/public_actions
-  ***********************************************************
+  脚本三创(优化) x2rr https://github.com/x2rr/public_actions
+//   ***********************************************************
   感谢原作者 hccluck https://github.com/hccluck/public_actions
+  感谢二创作者 harry27 https://github.com/HarrylXue/public_actions
  */
 
 const $ = new Env('掘金社区');
@@ -111,7 +112,7 @@ const drawFn = async () => {
     }).then((res) => res.json());
   })
   .then((res) => {
-    console.log(res);
+//     console.log(res);
     score = res.data;
     return dipLucky();
     
