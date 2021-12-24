@@ -30,6 +30,29 @@ const headers = {
   cookie
 };
 
+// 沾喜气
+const dipLucky = async () => {
+  const list = await fetch('https://api.juejin.cn/growth_api/v1/lottery_history/global_big', {
+    headers,
+    method: 'POST',
+    credentials: 'include',
+    body: JSON.stringify({ page_no: 1, page_size: 5 })
+  }).then((res) => res.json());
+
+  const res = await fetch('https://api.juejin.cn/growth_api/v1/lottery_lucky/dip_lucky', {
+    headers,
+    method: 'POST',
+    credentials: 'include',
+    body: JSON.stringify({ lottery_history_id: list.data.lotteries[0].history_id })
+  }).then((res) => res.json());
+
+  if (res.err_no !== 0) return Promise.reject('网络异常！');
+
+  if (res.data.has_dip) return Promise.resolve(`今日已经沾过喜气！喜气值：${res.data.total_value}`);
+
+  if (res.data.dip_action === 1) return Promise.resolve(`沾喜气成功！喜气值：${res.data.total_value}`);
+}
+
 // 抽奖
 const drawFn = async () => {
   // 查询今日是否有免费抽奖机会
@@ -90,17 +113,22 @@ const drawFn = async () => {
   .then((res) => {
     console.log(res);
     score = res.data;
+    return dipLucky();
+    
+  }).then((res)=>{
+    console.log(res);
+    lucky = res;
     return drawFn();
   })
   .then((msg) => {
     console.log(msg);
-    notify.sendNotify(`掘金签到通知`,`签到结果：${msg}\n`,`当前积分：${score}\n`)
+    notify.sendNotify(`掘金签到通知`,`沾喜气：${lucky}\n签到结果：${msg}\n当前积分：${score}`)
   })
   .then(() => {
     // console.log('邮件发送成功！');
   })
   .catch((err) => {
-    notify.sendNotify(`掘金签到通知`,`签到结果：${err}\n`,`当前积分：${score}\n`)
+    notify.sendNotify(`掘金签到通知`,`沾喜气：${lucky}\n签到结果：${msg}\n当前积分：${score}`)
   });
 
 
