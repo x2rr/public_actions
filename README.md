@@ -1,21 +1,22 @@
 ## jio本学习
 jio本介绍:
 掘金社区自动签到 
-签到后会获得一次免费抽奖机会，自动免费抽奖一次。
-执行完发送通知签到结果,调用qinglong内sendNotify.js。
+- 签到后会获得一次免费抽奖机会，自动免费抽奖一次。
+- 增加了每日沾喜气功能，沾喜气后再进行抽奖。
+- 执行完发送通知签到结果,调用qinglong内sendNotify.js。
 
 jio本导入:
 ```
 #进容器
 docker exec -it qinglong bash
 #拉仓库(一)
-ql repo https://github.com/HarrylXue/public_actions.git "juejin_"
+ql repo https://github.com/x2rr/public_actions.git "juejin_"
 #或拉单文件(二)
-ql raw https://raw.githubusercontent.com/HarrylXue/public_actions/master/juejin_signin.js
+ql raw https://raw.githubusercontent.com/x2rr/public_actions/ql/juejin_signin.js
 
 
 #发给bot
-/dl https://raw.githubusercontent.com/HarrylXue/public_actions/master/juejin_signin.js
+/dl https://raw.githubusercontent.com/x2rr/public_actions/ql/juejin_signin.js
 ```
 
 获取变量:
@@ -59,10 +60,3 @@ ql raw https://raw.githubusercontent.com/HarrylXue/public_actions/master/juejin_
 
 - 2021-09-06
     * 添加【掘金社区】每日签到抽奖脚本
-
-## 历史 Star 数
-
-
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/HarrylXue/public_actions.svg)](https://starchart.cc/HarrylXue/public_actions)
