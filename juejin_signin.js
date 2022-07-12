@@ -18,7 +18,7 @@ const fetch = require('node-fetch');
 const cookie = process.env.JUEJIN_COOKIE || ''
 
 let score = 0;
-
+let lucky = "";
 const headers = {
   'content-type': 'application/json; charset=utf-8',
   'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36',
